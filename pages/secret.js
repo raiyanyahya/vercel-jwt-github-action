@@ -10,8 +10,8 @@ export default function Secret() {
       const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
       const json = await res.json();
 
-      if (json.content) {
-        setContent(json.content);
+      if (json.title) {
+        setContent(json.title);
       }
     };
     fetchData();
