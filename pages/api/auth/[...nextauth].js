@@ -8,11 +8,10 @@ const options = {
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
-  database: {
-    type: "sqlite",
-    database: ":memory:",
-    synchronize: true,
-  },
+  secret: process.env.SECRET,
+  session: {
+    jwt: true
+  }
 };
 
 export default (req, res) => NextAuth(req, res, options);
