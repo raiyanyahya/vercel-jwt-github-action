@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { signOut, useSession } from "next-auth/client";
-import Link from "next/link";
 export default function Secret() {
   const [session, loading] = useSession();
   const [content, setContent] = useState();
@@ -34,11 +33,6 @@ export default function Secret() {
         <h1> Protected Page</h1>
         {session && (
           <>
-            Signed in as {session.user.email} <br />
-            <div>You can now access our super secret pages</div>
-            <button>
-              <Link href="/secret">To the secret</Link>
-            </button>
             <button onClick={signOut}>sign out</button>
           </>
         )}
