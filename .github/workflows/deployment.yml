@@ -1,7 +1,7 @@
 name: deploy webapp to vercel
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 jobs:
   deploy: 
     runs-on: ubuntu-latest
