@@ -17,7 +17,7 @@ export default function Home() {
         {!session && (
           <>
             Not signed in <br />
-            <button onClick={signIn}>Sign In</button>
+            <button onClick={signIn}>Sign In Now</button>
           </>
         )}
         {session && (
