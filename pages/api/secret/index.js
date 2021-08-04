@@ -4,8 +4,11 @@ export default async (req, res) => {
   const session = await getSession({ req });
 
   if (session) {
+    const resu = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+    const data = await resu.json()
+
     res.send({
-      content: "Welcome to the secret page",
+      content: data,
     });
   } else {
     res.send({
