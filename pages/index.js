@@ -1,12 +1,36 @@
-import Layout from '../components/layout'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import React from "react";
+import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/client";
 
-export default function Page () {
+export default function Home() {
+  const [session, loading] = useSession();
   return (
-    <Layout>
-      <h1>NextAuth.js Example</h1>
-      <p>
-        This is an example site to demonstrate how to use <a href={`https://next-auth.js.org`}>NextAuth.js</a> for authentication.
-      </p>
-    </Layout>
-  )
+    <div className={styles.container}>
+      <Head>
+        <title>Auth Examples</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main className={styles.main}>
+        {!session && (
+          <>
+            Not signed in <br />
+            <button onClick={signIn}>Sign In</button>
+          </>
+        )}
+        {session && (
+          <>
+            Signed in as {session.user.email} <br />
+            <div>You can now access our super secret pages</div>
+            <button>
+              <Link href="/secret">To the secret</Link>
+            </button>
+            <button onClick={signOut}>sign out</button>
+          </>
+        )}
+      </main>
+    </div>
+  );
 }
