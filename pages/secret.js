@@ -32,6 +32,16 @@ export default function Secret() {
     <main>
       <div>
         <h1> Protected Page</h1>
+        {session && (
+          <>
+            Signed in as {session.user.email} <br />
+            <div>You can now access our super secret pages</div>
+            <button>
+              <Link href="/secret">To the secret</Link>
+            </button>
+            <button onClick={signOut}>sign out</button>
+          </>
+        )}
         <p>{content}</p>
       </div>
     </main>
