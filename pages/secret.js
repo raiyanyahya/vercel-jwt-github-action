@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { signOut, useSession } from "next-auth/client";
-
+import Link from "next/link";
 export default function Secret() {
   const [session, loading] = useSession();
   const [content, setContent] = useState();
