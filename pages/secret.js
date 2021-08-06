@@ -1,26 +1,19 @@
 import { useState, useEffect } from "react";
 import { signOut, useSession } from "next-auth/client";
-import { useCookies } from 'react-cookie';
-
 
 
 
 export default function Secret() {
   const [session, loading] = useSession();
   const [content, setContent] = useState();
- const [cookies, setCookie] = useCookies(['name']);
+  
   useEffect(() => {
-    const fetchData = async (req) => {
-     
-      console.log("this is cookie",cookies)
-      const res = await fetch("https://vercel-python-action.vercel.app/api",{
-  method: 'POST',
-  credentials: 'include'
-});
+    const fetchData = async () => {
+      const res = await fetch("/api/secret");
       const json = await res.json();
 
-      if (json.title) {
-        setContent(json.title);
+      if (json.content) {
+        setContent(json.content);
       }
     };
     fetchData();
