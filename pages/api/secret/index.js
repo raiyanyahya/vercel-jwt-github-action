@@ -4,8 +4,13 @@ export default async (req, res) => {
   const session = await getSession({ req });
 
   if (session) {
+    const res1 = await fetch("https://vercel-python-action.vercel.app/api",{
+  method: 'POST',
+  credentials: 'include'
+});
+      const json1 = await res1.json();
     res.send({
-      content: "Welcome to the secret page",
+      content: json1
     });
   } else {
     res.send({
