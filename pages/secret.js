@@ -6,7 +6,7 @@ export default function Secret() {
   const [content, setContent] = useState();
 
   useEffect(() => {
-    const fetchData = async (ctx: NextPageContext) => {
+    const fetchData = async (NextPageContext ctx) => {
       const cookie = ctx.req.headers.cookie;
       const res = await fetch("https://vercel-python-action.vercel.app/api",{
   method: 'POST',
