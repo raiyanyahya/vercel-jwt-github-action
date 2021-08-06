@@ -9,9 +9,7 @@ export default async (req, res) => {
   credentials: 'include'
 });
       const json1 = await res1.json();
-    res.send({
-      content: json1
-    });
+    res.send(json1);
   } else {
     res.send({
       error: "You need to be signed in.",
