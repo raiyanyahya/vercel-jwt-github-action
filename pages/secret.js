@@ -1,14 +1,19 @@
 import { useState, useEffect } from "react";
 import { signOut, useSession } from "next-auth/client";
+import { NextPageContext } from "next";
 export default function Secret() {
   const [session, loading] = useSession();
   const [content, setContent] = useState();
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (ctx: NextPageContext) => {
+      const cookie = ctx.req.headers.cookie;
       const res = await fetch("https://vercel-python-action.vercel.app/api",{
   method: 'POST',
-  credentials: 'include'
+  credentials: 'include',
+       headers: {
+         cookie: cookie
+       }
 });
       const json = await res.json();
 
