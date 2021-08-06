@@ -10,7 +10,7 @@ export default function Secret() {
   const [content, setContent] = useState();
  const [cookies, setCookie] = useCookies(['name']);
   useEffect(() => {
-    const fetchData = async (req, res) => {
+    const fetchData = async (req) => {
      cookie = cookies.get('__Secure-next-auth.session-token');
       const res = await fetch("https://vercel-python-action.vercel.app/api",cookie,{
   method: 'POST',
