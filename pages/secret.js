@@ -6,7 +6,7 @@ export default function Secret() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("https://vercel-python-action.vercel.app/");
+      const res = await fetch("https://vercel-python-action.vercel.app/api");
       const json = await res.json();
 
       if (json.title) {
