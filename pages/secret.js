@@ -8,7 +8,7 @@ export default function Secret() {
     const fetchData = async () => {
       const res = await fetch("https://vercel-python-action.vercel.app/api",{
   method: 'POST',
-  credentials: 'same-origin'
+  credentials: 'include'
 });
       const json = await res.json();
 
