@@ -29,6 +29,12 @@ const options = {
   // You can generate a signing key using `jose newkey -s 512 -t oct -a HS512`
   // This gives you direct knowledge of the key used to sign the token so you can use it
   // to authenticate indirectly (eg. to a database driver)
+    signingKey: {
+     kty: "oct",
+     kid: "Dl893BEV-iVE-x9EC52TDmlJUgGm9oZ99_ZL025Hc5Q",
+     alg: "HS512",
+     k: "K7QqRmJOKRK2qcCKV_pi9PSBv3XP0fpTu30TP8xn4w01xR3ZMZM38yL2DnTVPVw6e4yhdh0jtoah-i4c_pZagA"
+  },
   //signingKey: {"kty":"oct","kid":"70QWdXe9gG-nwvZdmNyr_94ONoLRmGq_X45z1Cune88","alg":"HS512","k":"NRNYrTJLRQEtiOx2NxoqDYuvWIXqvdtwi3lZ8eZYv8KnG0Ph3WwNgqqLqdzI9BviYUIXRFAqkm4v-mpl08qudg"},
 }
 };
