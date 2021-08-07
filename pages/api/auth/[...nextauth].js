@@ -1,9 +1,6 @@
 import Providers from "next-auth/providers";
 import NextAuth, { User as NextAuthUser } from 'next-auth';
 
-interface NextAuthUserWithStringId extends NextAuthUser {
-id: string
-}
 const options = {
   providers: [
     Providers.GitHub({
