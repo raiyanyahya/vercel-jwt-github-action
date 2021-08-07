@@ -1,11 +1,22 @@
-import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import NextAuth, { User as NextAuthUser } from 'next-auth';
 
+interface NextAuthUserWithStringId extends NextAuthUser {
+id: string
+}
 const options = {
   providers: [
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
+      profile(profile) {
+        return {
+          id: profile.id.toString(),
+          name: profile.name || profile.login,
+          email: profile.email,
+          image: profile.avatar_url,
+        } as NextAuthUserWithStringId
+      },
     }),
   ],
   secret: process.env.SECRET,
