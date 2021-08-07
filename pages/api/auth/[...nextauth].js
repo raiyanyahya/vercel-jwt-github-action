@@ -25,7 +25,7 @@ const options = {
   // Defaults to NextAuth.js secret if not explicitly specified.
   // This is used to generate the actual signingKey and produces a warning
   // message if not defined explicitly.
-  secret: process.env.SECRET,
+  //secret: process.env.SECRET,
   // You can generate a signing key using `jose newkey -s 512 -t oct -a HS512`
   // This gives you direct knowledge of the key used to sign the token so you can use it
   // to authenticate indirectly (eg. to a database driver)
