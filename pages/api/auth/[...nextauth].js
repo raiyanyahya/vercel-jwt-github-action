@@ -12,7 +12,7 @@ const options = {
           name: profile.name || profile.login,
           email: profile.email,
           image: profile.avatar_url,
-        } as NextAuthUserWithStringId
+        }
       },
     }),
   ],
