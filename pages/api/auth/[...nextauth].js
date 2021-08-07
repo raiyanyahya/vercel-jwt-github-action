@@ -8,7 +8,7 @@ const options = {
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
-  
+  secret: process.env.SECRET,
   session: {
     jwt: true
   },
