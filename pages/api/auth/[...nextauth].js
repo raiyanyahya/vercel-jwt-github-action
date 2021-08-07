@@ -1,5 +1,5 @@
 import Providers from "next-auth/providers";
-import NextAuth, { User as NextAuthUser } from 'next-auth';
+import NextAuth from 'next-auth';
 
 const options = {
   providers: [
