@@ -13,7 +13,8 @@ export default async (req, res) => {
       headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Cache': 'no-cache'
+    'Cache': 'no-cache',
+        'Cookie': req.headers['cookie']
   },
 //headers: { Cookie: req.headers['cookie'] }
 });
