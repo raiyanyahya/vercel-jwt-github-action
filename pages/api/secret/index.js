@@ -10,6 +10,11 @@ export default async (req, res) => {
     const res1 = await fetch("https://vercel-python-action.vercel.app/api",{
   method: 'POST',
   credentials: 'include',
+      headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Cache': 'no-cache'
+  },
 //headers: { Cookie: req.headers['cookie'] }
 });
       const json1 = await res1.json();
