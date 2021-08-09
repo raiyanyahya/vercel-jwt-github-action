@@ -41,7 +41,7 @@ const options = {
       return Promise.resolve(session);
     },
     async jwt(token, user, account, profile, isNewUser) { 
-      const isUserSignedIn = user ? true : false;
+      //const isUserSignedIn = user ? true : false;
       // make a http call to our graphql api
       // store this in postgres
       console.log("user is ", user);
