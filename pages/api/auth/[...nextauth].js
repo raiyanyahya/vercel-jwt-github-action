@@ -35,7 +35,7 @@ const options = {
     // async signIn(user, account, profile) { return true },
     // async redirect(url, baseUrl) { return baseUrl },
     async session(session, token) { 
-      const encodedToken = jwt.sign(token, process.env.SECRET, { algorithm: 'HS256'});
+      const encodedToken = jwt.sign(token, process.env.SECRET, { algorithm: 'HS512'});
       session.id = token.id;
       session.token = encodedToken;
       return Promise.resolve(session);
