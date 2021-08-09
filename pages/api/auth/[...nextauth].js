@@ -17,7 +17,7 @@ const options = {
     secret: process.env.SECRET,
     encode: async ({ secret, token, maxAge }) => {
       const jwtClaims = {
-        "sub": token.sub.toString() ,
+        "sub": token.toString() ,
         "name": token.name ,
         "email": token.email,
         "iat": Date.now() / 1000,
