@@ -45,9 +45,10 @@ const options = {
       // make a http call to our graphql api
       // store this in postgres
       console.log("user is ", user);
-      if(isUserSignedIn) {
-        token.id = user.id;
-      }
+      console.log("token is ", token);
+      //if(isUserSignedIn) {
+      //  token.id = user.id;
+      //}
       return Promise.resolve(token);
     }
   },
