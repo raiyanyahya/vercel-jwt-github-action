@@ -23,11 +23,11 @@ const options = {
         "iat": Date.now() / 1000,
         "exp": Math.floor(Date.now() / 1000) + (24*60*60),
       };
-      const encodedToken = jwt.sign(jwtClaims, secret, { algorithm: 'HS256'});
+      const encodedToken = jwt.sign(jwtClaims, secret, { algorithm: 'HS512'});
       return encodedToken;
     },
     decode: async ({ secret, token, maxAge }) => {
-      const decodedToken = jwt.verify(token, secret, { algorithms: ['HS256']});
+      const decodedToken = jwt.verify(token, secret, { algorithms: ['HS512']});
       return decodedToken;
     },
   },
