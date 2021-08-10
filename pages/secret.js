@@ -1,61 +1,50 @@
 import { useState, useEffect } from "react";
 import { signOut,signIn, useSession } from "next-auth/client";
 
-
-
-export default function Secret() {
-  const [session, loading] = useSession();
-  const [content, setContent] = useState();
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      if(!session?.user) {
-        return;
-      }
-
-      try {
-
-        const res = await fetch("/api/secret");
-        const json = await res.json();
-  
-        if (json) {
-          console.log("got the data", json);
-          setContent(json);
-        }
-      } catch(err) {
-        console.log("something went wrong fetching the secret", err)
-      }
-    };
-    fetchData();
-  }, [session]);
-
-  if (typeof window !== "undefined" && loading) return null;
-
-  if (!session) {
-    return (
-      <main>
-        <div>
-          <h1>You aren't signed in, please sign in first</h1>
-      {!session && (
-          <>
-            <button onClick={signIn}>sign in</button>
-          </>
-        )}
-        </div>
-      </main>
-    );
-  }
+export default function Secret({user, json}) {
   return (
     <main>
       <div>
         <h1> Protected Page</h1>
-        {session && (
+        {user && (
           <>
             <button onClick={signOut}>sign out</button>
           </>
         )}
-        <p><pre>{JSON.stringify(content, undefined, 2)}</pre></p>
+        <p><pre>{JSON.stringify(json, undefined, 2)}</pre></p>
+        <h3>User Data:</h3>
+        <p><pre>{JSON.stringify(user, undefined, 2)}</pre></p>
       </div>
     </main>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+
+  if(!session?.user) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  }
+
+  let json;
+
+  try {
+    const res = await fetch("/api/secret");
+    json = await res.json();
+
+    if (json) {
+      console.log("got the data", json);
+    }
+  } catch(err) {
+    console.log("something went wrong fetching the secret", err)
+  }
+
+  return {
+    props: { user: session.user, json }
+  }
 }
