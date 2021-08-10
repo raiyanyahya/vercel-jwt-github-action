@@ -9,11 +9,18 @@ export default function Secret() {
   
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/secret");
-      const json = await res.json();
 
-      if (json) {
-        setContent(json);
+      try {
+
+        const res = await fetch("/api/secret");
+        const json = await res.json();
+  
+        if (json) {
+          console.log("got the data", json);
+          setContent(json);
+        }
+      } catch(err) {
+        console.log("something went wrong fetching the secret", err)
       }
     };
     fetchData();
@@ -44,7 +51,7 @@ export default function Secret() {
             <button onClick={signOut}>sign out</button>
           </>
         )}
-        <p>{content}</p>
+        <p><pre>{JSON.stringify(content, undefined, 2)}</pre></p>
       </div>
     </main>
   );
