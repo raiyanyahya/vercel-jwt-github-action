@@ -9,6 +9,9 @@ export default function Secret() {
   
   useEffect(() => {
     const fetchData = async () => {
+      if(!session?.user) {
+        return;
+      }
 
       try {
 
